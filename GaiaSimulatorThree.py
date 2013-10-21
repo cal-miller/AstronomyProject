@@ -1,4 +1,4 @@
-"""
+    """
 Imports a spectrum, imports an instrument's bandpasses.
 Applies the bandpasses to the spectrum and convolves the spectrum with a gaussian kernel to simulate the output
 from the telescope.
@@ -8,7 +8,7 @@ Requires:
 Inputs:
     red_throughputs:  List of all the throughputs for the red spectrometer
     blue_throughputs: List of all the throughputs for the blue spectrometer
-    throughputs_location: Address of  directory containing throughputs
+    throughputs_location: Address of  directory containing throughput
     sigma: width of gaussian kernel
     sed: sed object
 Outputs:
