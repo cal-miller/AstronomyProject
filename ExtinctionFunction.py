@@ -8,6 +8,9 @@ wl is in nm
 
 extinction is in magnitudes
 transmission is 0-1
+
+For our program, a0 < 1
+r = 3.1
 """
 
 def extinction(wl, a0, r):
