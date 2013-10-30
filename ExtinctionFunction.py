@@ -10,11 +10,12 @@ extinction is in magnitudes
 transmission is 0-1
 
 For our program, a0 < 1
+increment by .1
 r = 3.1
 """
 
 def extinction(wl, a0, r):
-    x = 1000/wl
+    x = 1000./wl
     a = 1.802 - 0.316*x - 0.104/((x-4.67)**2 + 0.341)
     b = -3.090 + 1.825*x + 1.206/((x-4.62)**2 + 0.263)
 

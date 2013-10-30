@@ -1,4 +1,4 @@
-    """
+"""
 Imports a spectrum, imports an instrument's bandpasses.
 Applies the bandpasses to the spectrum and convolves the spectrum with a gaussian kernel to simulate the output
 from the telescope.
