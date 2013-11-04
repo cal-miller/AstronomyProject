@@ -12,6 +12,8 @@ transmission is 0-1
 For our program, a0 < 1
 increment by .1
 r = 3.1
+
+Gaia knows a0 with precision of +-.1
 """
 
 def extinction(wl, a0, r):
