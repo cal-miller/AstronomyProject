@@ -2,13 +2,12 @@ import numpy as np
 import scipy as sp
 import scipy.interpolate as interp
 import scipy.stats as stats
-import matplotlib.pyplot as plt
 import time
 
 
 #Loads files
 points = np.loadtxt("SamplePoints.txt")
-data = np.loadtxt("Mags_g.txt")
+data = np.loadtxt("Mags_g_trimmed.txt")
 stats_file = open("InterpStats.txt" , 'w')
 
 #Breaks data into programmer-readable chunks
@@ -27,7 +26,7 @@ for point in points:
     temp_grid = np.arange(t_point-200.,t_point+200.,20.)#2300 to 12000, Variation: 200
     metallicity_grid = np.arange(z_point-.3,z_point+.3,.05)#-4 to 1, Variation: .3
     gravity_grid = np.arange(g_point-.2,g_point+.2,.05)#0 to 7, Variation: .2
-    a0_grid = np.arange(0,.2,.005)#0 to 1
+    a0_grid = np.arange(0,.2,.005)#0 to 1, Variation: .1
     
     #Does nasty array stuff to prepare data for interpolation
     eval_grid = np.meshgrid(temp_grid, gravity_grid, metallicity_grid, a0_grid)
@@ -42,5 +41,5 @@ for point in points:
     
     #Outputs results
     out[7], out[8], out[9], out[10] = eval_points[:,0], eval_points[:,1], eval_points[:,2], eval_points[:,3]
-    np.savetxt('interp_'+str(t_point)+"_"+str(z_point)+"_"+str(g_point)+"_"+str(a0_point)+'.txt', np.transpose(out),header = 'Gaia_G_Mag LSST_U_Mag LSST_G_Mag LSST_R_Mag LSST_I_Mag LSST_Z_Mag LSST_Y4_Mag Temperature Gravity Metallicity a0')
+    np.savetxt('interp_'+str(t_point)+"_"+str(z_point)+"_"+str(g_point)+"_"+str(a0_point)+'trim.txt', np.transpose(out),header = 'Gaia_G_Mag LSST_U_Mag LSST_G_Mag LSST_R_Mag LSST_I_Mag LSST_Z_Mag LSST_Y4_Mag Temperature Gravity Metallicity a0')
     print(time.time()-start_time)

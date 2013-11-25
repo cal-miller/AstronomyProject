@@ -1,9 +1,0 @@
-# LSST_U_Mag_SD LSST_U_Mag_Skew LSST_G_Mag_SD LSST_G_Mag_Skew LSST_R_Mag_SD LSST_R_Mag_Skew LSST_I_Mag_SD LSST_I_Mag_Skew LSST_Z_Mag_SD LSST_Z_Mag_Skew LSST_Y4_Mag_SD LSST_Y4_Mag_Skew Temperature Gravity Metallicity
-nan nan nan nan nan nan nan nan nan nan nan nan 4437.0 4.73 -0.5
-nan nan nan nan nan nan nan nan nan nan nan nan 4968.0 4.61 -0.5
-nan nan nan nan nan nan nan nan nan nan nan nan 5307.0 4.55 -0.5
-nan nan nan nan nan nan nan nan nan nan nan nan 5814.0 4.24 -1.0
-nan nan nan nan nan nan nan nan nan nan nan nan 6140.0 4.0 -1.2
-nan nan nan nan nan nan nan nan nan nan nan nan 5295.0 3.21 -1.5
-nan nan nan nan nan nan nan nan nan nan nan nan 7638.0 4.25 -1.2
-nan nan nan nan nan nan nan nan nan nan nan nan 8472.0 4.41 -2.0
