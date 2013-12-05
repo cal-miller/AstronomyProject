@@ -7,7 +7,7 @@ import time
 
 #Loads files
 points = np.loadtxt("SamplePoints.txt")
-data = np.loadtxt("Mags_g_trimmed.txt")
+data = np.loadtxt("Mags_g.txt")
 stats_file = open("InterpStats.txt" , 'w')
 
 #Breaks data into programmer-readable chunks
@@ -32,14 +32,17 @@ for point in points:
     eval_grid = np.meshgrid(temp_grid, gravity_grid, metallicity_grid, a0_grid)
     eval_points = np.zeros((len(np.ravel(eval_grid[0])),4))
     eval_points[:,0], eval_points[:,1], eval_points[:,2], eval_points[:,3] = np.ravel(eval_grid[0]), np.ravel(eval_grid[1]), np.ravel(eval_grid[2]), np.ravel(eval_grid[3])
+    center = [[t_point, g_point, z_point, a0_point]]
     out = np.empty((11,len(eval_points))); 
        
     #Actually interpolates each band
     for band in range(0,7):
+        zero_point = interp.griddata(interp_points, mags[:,band], center)
         interpolated = interp.griddata(interp_points, mags[:,band], eval_points)
+        interpolated[:] = [x - zero_point for x in interpolated]
         out[band,:] = interpolated
     
     #Outputs results
     out[7], out[8], out[9], out[10] = eval_points[:,0], eval_points[:,1], eval_points[:,2], eval_points[:,3]
-    np.savetxt('interp_'+str(t_point)+"_"+str(z_point)+"_"+str(g_point)+"_"+str(a0_point)+'trim.txt', np.transpose(out),header = 'Gaia_G_Mag LSST_U_Mag LSST_G_Mag LSST_R_Mag LSST_I_Mag LSST_Z_Mag LSST_Y4_Mag Temperature Gravity Metallicity a0')
+    np.savetxt('interp_'+str(t_point)+"_"+str(z_point)+"_"+str(g_point)+"_"+str(a0_point)+'.txt', np.transpose(out),header = 'Gaia_G_Mag LSST_U_Mag LSST_G_Mag LSST_R_Mag LSST_I_Mag LSST_Z_Mag LSST_Y4_Mag Temperature Gravity Metallicity a0')
     print(time.time()-start_time)
