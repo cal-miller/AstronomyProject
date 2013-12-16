@@ -23,10 +23,10 @@ for point in points:
 
     
     #Defines range of coordinates of points at which to interpolate
-    temp_grid = np.arange(t_point-200.,t_point+200.,20.)#2300 to 12000, Variation: 200
-    metallicity_grid = np.arange(z_point-.3,z_point+.3,.05)#-4 to 1, Variation: .3
-    gravity_grid = np.arange(g_point-.2,g_point+.2,.05)#0 to 7, Variation: .2
-    a0_grid = np.arange(0,.2,.005)#0 to 1, Variation: .1
+    temp_grid = t_point + np.random.randn(20)*330#2300 to 12000, Variation: 200
+    metallicity_grid = z_point + np.random.randn(20)*.835 #-4 to 1, Variation: .3
+    gravity_grid = g_point + np.random.randn(20)*.445 #0 to 7, Variation: .2
+    a0_grid = a0_point + np.random.randn(20)*.105 #0 to 1, Variation: .1
     
     #Does nasty array stuff to prepare data for interpolation
     eval_grid = np.meshgrid(temp_grid, gravity_grid, metallicity_grid, a0_grid)
@@ -39,7 +39,7 @@ for point in points:
     for band in range(0,7):
         zero_point = interp.griddata(interp_points, mags[:,band], center)
         interpolated = interp.griddata(interp_points, mags[:,band], eval_points)
-        interpolated[:] = [x - zero_point for x in interpolated]
+        interpolated -= zero_point
         out[band,:] = interpolated
     
     #Outputs results
